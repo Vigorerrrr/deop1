@@ -216,7 +216,7 @@ for循环,map函数等等)
 1、生成器相比选代器多了三种方法:send(),close(),throw()
 send()方法,发送数据
 close方法:关闭生成器
-throw方法:
+throw方法: 在生成器内部主动引发一个异常
 gen.throw(Exception,"Method throw called!")
 生成器<迭代器<可迭代对象
 
@@ -289,5 +289,22 @@ for processed_data in process_sensor_data(sensor):
     # 处理每一条处理后的数据
     print(processed_data)
 
-9 00:00
 """
+"""
+
+2、当前有文件case.excel,设计程序将exce1中的用例读取到一个生成成器?
+3、请描述什么是可选代对象?什么是选代器? 选代器和生成器的区别?
+
+"""
+
+
+# def read_large_file(file_path):
+#     with open(file_path,'r') as file:
+#         for li in file:
+#             yield li.strip()
+#
+#
+# for line in read_large_file('case.excel'):
+#     print(line)
+
+

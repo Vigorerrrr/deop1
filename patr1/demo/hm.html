@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>点击按钮跳转展示 HTML 数据</title>
+</head>
+<body>
+    <button id="displayBtn">点击展示 HTML 数据</button>
+
+    <script>
+        // 处理按钮点击事件
+        document.getElementById("displayBtn").addEventListener("click", function() {
+            // 发送 GET 请求获取 HTML 数据连接
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/get_html_link', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var htmlLink = response.html_link;
+                    // 跳转到 HTML 数据连接
+                    window.location.href = htmlLink;
+                }
+            };
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
