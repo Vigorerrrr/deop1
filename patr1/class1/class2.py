@@ -218,6 +218,7 @@ send()方法,发送数据
 close方法:关闭生成器
 throw方法: 在生成器内部主动引发一个异常
 gen.throw(Exception,"Method throw called!")
+
 生成器<迭代器<可迭代对象
 
 """
