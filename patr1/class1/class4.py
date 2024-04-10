@@ -61,12 +61,12 @@
 
 ```python
 class Singleton:
-    _instance = None
+    __instance = None
     
     def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+        return cls.__instance
 
 # 示例用法
 singleton1 = Singleton()
@@ -210,14 +210,37 @@ t = Test()
 t()
 
 
+
+用类实现装饰器
+class Decorator:
+    def __init__(self, func):
+        self.func = func
+
+    def __call__(self, *args, **kwargs):
+        # 在被装饰的函数执行前的逻辑
+        print("Before function execution")
+
+        # 调用被装饰的函数
+        result = self.func(*args, **kwargs)
+
+        # 在被装饰的函数执行后的逻辑
+        print("After function execution")
+
+        return result
+
+# 使用装饰器类
+@Decorator     # my_function = Decorator(my_function)
+def my_function():
+    print("Inside the function")
+
+# 调用被装饰的函数
+my_function()
+
+
 """
 
 """
-5、上下文管理器
-问题思考:with打开文件为何会自动关闭?
 
-上下文管理器的概念:上下文管理器是一个Python对象,为操作提供了额外的上下文信息。这种额外的信息,在
-使用with语句初始化上下文,以及完成with块中的所有代码时,采用可调用的形式。
 
 
 
@@ -232,7 +255,97 @@ _mod_(self,other)   定义取余算法的行为:%
 更多的魔术方法参考地址:https://www.cnblogs.com/nmb-musen/p/10861536.html
 
 
-16  00:00
+
+5、上下文管理器
+问题思考:with打开文件为何会自动关闭?
+
+上下文管理器的概念:上下文管理器是一个Python对象,为操作提供了额外的上下文信息。这种额外的信息,在
+使用with语句初始化上下文,以及完成with块中的所有代码时,采用可调用的形式。
+
+with open("example.txt", "w") as file:
+    file.write("数据分析机制")
+    
+
+
+
+上下文管理器是一种 Python 对象，它定义了在进入和退出某个代码块时需要执行的操作。通常情况下，上下文管理器会使用 `with` 语句进行管理。在 `with` 语句块中，会自动获取和释放资源，无论代码块是否出现异常。
+
+你可以通过两种方式来实现上下文管理器：
+
+1. 使用类：你可以定义一个类，并实现 `__enter__` 和 `__exit__` 方法来创建一个上下文管理器。
+2. 使用 `contextlib` 模块：你也可以使用 `contextlib` 模块中的装饰器 `contextmanager` 来创建一个上下文管理器。
+
+
+
+下面是两种方式的示例：
+
+**使用类实现上下文管理器：**
+
+```python
+class MyContextManager:
+    def __enter__(self):
+        print("Entering the context")
+        # 返回需要管理的资源
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Exiting the context")
+        # 在退出上下文时进行清理工作
+
+# 使用上下文管理器
+with MyContextManager() as cm:
+    # 在 with 语句块中执行操作
+    print("Inside the context")
+```
+
+**使用 `contextlib` 模块实现上下文管理器：**
+
+```python
+from contextlib import contextmanager
+
+@contextmanager
+def my_context_manager():
+    print("Entering the context")
+    # 在 yield 之前相当于 __enter__ 方法
+    yield
+    # 在 yield 之后相当于 __exit__ 方法
+    print("Exiting the context")
+
+# 使用上下文管理器
+with my_context_manager():
+    # 在 with 语句块中执行操作
+    print("Inside the context")
+```
+
+无论你选择哪种方式，都可以使用 `with` 语句来管理资源，确保资源在退出代码块时被正确释放，即使在代码块中发生异常时也会被释放。
+
+
+
+
 
 """
+with open('12') as f:
+    f.write("123")
+
+"""
+import time
+
+class Timer:
+    def __enter__(self):
+        self.start_time = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.end_time = time.time()
+        elapsed_time = self.end_time - self.start_time
+        print(f"Elapsed time: {elapsed_time} seconds")
+
+# 使用上下文管理器计时代码执行时间
+with Timer():
+    # 模拟一些耗时操作
+    time.sleep(2)
+
+
+"""
+
 
