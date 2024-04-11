@@ -238,13 +238,195 @@ slots 属性限制对象属性，节约内存
 
 
 
+"""
+3.4、自定义属性访问
+可以定义下面的方法来自定义类例的属性访问的含义(访问、赋值或者删除x.name)。
+    object.__getattr__
+        当属性查找在通常的地方没有找到该属性时调用
+    object.__getattribute__
+        查找属性时,第一时间会调用该方法
+    object.__setattr__
+        设置属性时,调用该方法设置属性,
+    object.__delattr__
+        在del obj.attr删除属性时触发,
 
 
 
+"""
+
+
+# class Test:
+#
+#     def __getattribute__(self, item):
+#         print('__getattribute__')
+#         return super().__getattribute__(item)
+#         # super().__getattribute__(item)
+#
+#     def __getattr__(self, item):
+#         # 属性不存在会触发 出现attrerror会被触发
+#         print('getattr调用')
+#         # object.__getattribute__(self,item)
+#         return 100
+#
+#
+#
+#
+# t = Test()
+# t.name = 10
+# print(t.name1)
+#
+
+
+"""
+
+具体来说，当你访问一个对象的属性时，Python 首先会尝试调用对象的 __getattribute__ 方法。如果这个方法不存在或者引发了 AttributeError 异常，那么 Python 将会尝试调用 __getattr__ 方法来处理属性的访问。
+
+这意味着，如果对象定义了 __getattribute__ 方法，那么在任何情况下都会首先执行 __getattribute__ 方法。只有在 __getattribute__ 方法中无法处理属性访问时，才会继续执行 __getattr__ 方法。
+
+
+class MyClass:
+    def __init__(self):
+        self.x = 10
+
+    def __getattribute__(self, name):
+        print(f"__getattribute__ is called for {name}")
+        # 尝试获取属性，如果失败，则引发 AttributeError
+        try:
+            return object.__getattribute__(self, name)
+        except AttributeError:
+            # 如果无法获取属性，则继续执行 __getattr__
+            return self.__getattr__(name)
+
+    def __getattr__(self, name):
+        print(f"__getattr__ is called for {name}")
+        return "default"
+
+# 创建一个 MyClass 对象
+obj = MyClass()
+
+# 访问已存在的属性
+print(obj.x)  # 输出：__getattribute__ is called for x
+              #      10
+
+# 访问不存在的属性
+print(obj.y)  # 输出：__getattribute__ is called for y
+              #      __getattr__ is called for y
+              #      default
+
+
+"""
+
+"""
+在 Python 中，`__getattribute__`、`__getattr__` 和 `__setattr__` 这三个方法的执行顺序是：
+
+1. 当你尝试访问对象的属性时，Python 首先会尝试调用对象的 `__getattribute__` 方法。
+2. 如果 `__getattribute__` 方法存在且成功获取属性，则该方法执行完成，不会再调用 `__getattr__` 方法。
+3. 如果 `__getattribute__` 方法不存在或者无法获取属性（比如引发了 `AttributeError` 异常），那么 Python 将会尝试调用对象的 `__getattr__` 方法。
+4. 如果对象同时定义了 `__getattr__` 方法，并且 `__getattr__` 方法成功处理了属性的访问，则该方法执行完成。
+5. 如果 `__getattr__` 方法不存在，或者 `__getattr__` 方法无法处理属性的访问，Python 将会引发 `AttributeError` 异常。
+
+至于 `__setattr__` 方法，在对象的属性赋值操作中起作用。当你尝试设置对象的属性时，Python 会首先调用对象的 `__setattr__` 方法。如果对象定义了 `__setattr__` 方法，该方法会负责处理属性的赋值操作；如果没有定义或者 `__setattr__` 方法中显式地调用了 `object` 类的 `__setattr__` 方法来实现属性赋值操作，则 Python 将直接将值分配给属性。
+
+综上所述，`__setattr__` 方法的执行顺序与属性赋值相关，而 `__getattribute__` 和 `__getattr__` 方法则与属性访问相关。在属性访问过程中，`__getattribute__` 方法优先于 `__getattr__` 方法执行。
+
+
+"""
+
+
+"""
+利用setattr干扰age的年龄设置
+
+class Test:
+
+    def __setattr__(self, key, value):
+    
+        if key == 'age':
+            super().__setattr__(key,18)
+        else:
+            super().__setattr__(key,value)
+
+
+t = Test()
+t.name = 'mumu'
+t.age = 21
+
+print(t.name)
+print(t.age)
 
 
 
+"""
 
+
+# class Test:
+#     def __delattr__(self,item):
+#         pass
+#         if item == 'name':
+#             pass
+#         else:
+#             print('--del--')
+#             super().__delattr__(item)
+#
+# t = Test()
+# t.name = 'mumu'
+# t.age = 21
+#
+# del t.name
+#
+# print(t.name)
+# print(t.age)
+#
+#
+#
+
+
+"""
+3.5、描述器
+描述器是一个具有"绑定行为"的对象属性,该对象的属性访问通过描述器协议覆盖:__get__() __set__()和
+__delete__()。如果一个对象定义这些方法中的任何一个,它被你为一个描述器
+
+object.__get__(self, instance, owner)
+获取属主类的属性(类属性访问)或者该类的一个实例的属性(实例属性访问)。owner始终是属主,
+instance是属性访问的实例,当属性通过owner访问时则为None,这个方法应该返回(计算后)的属性
+值,或者引发一个AttributeError异常。
+
+object.__set__(self, instance, value)
+设置属主类的实例instance的属性为一个新值value.
+
+object.__delete__(self, instance)
+删除属主类的实例instance的属性。
+
+
+"""
+
+
+class Filed(object):
+        # 一个类中,只要出现以下三个方法的任何一个,那么该类就被称为描述器类
+    def __get__(self,instance,owner):
+        print('get---')
+        return self.value
+
+    def __set__(self,instance,value):
+        print('触发了set方法')
+        self.value = value
+
+    def __delete__(self,instance):
+        print('删除---')
+        self.value = None
+
+
+class Model(object):
+    name = 'mumu'
+    attr = Filed()  # 描述器对象：会覆盖类属性相关操作
+
+
+m = Model()
+# m.name = '最白的菜'
+
+m.attr = 1000
+del m.attr
+
+print(m.attr)
 
 
 
