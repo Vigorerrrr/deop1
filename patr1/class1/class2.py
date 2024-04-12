@@ -105,7 +105,7 @@ print(flattened_matrix)
 
 
 
-#宁典推导式
+#字典推导式
 dic1 = {i:i+1 for i in range(10)}
 print(dic1)
 

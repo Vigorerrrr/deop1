@@ -63,12 +63,19 @@ class TestReports(BaseTable):
 
 
 class CharFiled:
+
+    def __init__(self,max_length=20):
+        self.max_length = max_length
+
     def __get__(self, instance, owner):
         return self.value
 
     def __set__(self, instance, value):
         if isinstance(value,str):
-            self.value = value
+            if len(value) <= self.max_length:
+                self.value = value
+            else:
+                raise ValueError('字符串长度超{}'.format(self.max_length))
         else:
             raise TypeError('need str')
 
@@ -77,15 +84,16 @@ class CharFiled:
 
 
 class UserModel(object):
-        #假设我这个是模型类
-        name = CharFiled()  #   只能赋值字符串
-        pwd = CharFiled()
+        # 假设我这个是模型类
+        name = CharFiled(max_length=20)  # 只能赋值字符串
+        pwd = CharFiled(max_length=40)
 
 
 m = UserModel()
 
-m.name = '999'
+m.name = 'maimai'
+m.pwd = 'ashkdadjqowqueio'
 print(m.name)
-
+print(m.pwd)
 
 
