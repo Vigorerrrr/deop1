@@ -106,18 +106,82 @@ class MyClass(metaclass=MyMeta):
 
 """
 
-from django.db import models
-
-
-models.Model()
-
-"""
-元类1 58
 
 """
 
 
+"""
 
 
+from class7_1 import BaseFiled, BoolFiled, CharFiled, IntFiled
+
+
+class FiledMetaClass(type):
+    """
+    创建模型类的元类
+    """
+    def __new__(cls, name, bases, dic, *args, **kwargs):
+        if name == 'BaseModel':
+            return super().__new__(cls, name, bases, dic)
+        else:
+            table_name = name.lower()
+            fileds = {}
+            for k, v in list(dic.items()):
+                if isinstance(v, BaseFiled):
+                    fileds[k] = v
+            dic['t_name'] = table_name
+            dic['fileds'] = fileds
+            # 生成一个表的sql
+            return super().__new__(cls, name, bases, dic)
+
+
+class BaseModel(metaclass=FiledMetaClass):
+    def __init__(self, **kwargs):
+        for k, v in kwargs.items():
+            setattr(self, k, v) # 设置属性
+
+    def save(self):
+        # 保存一条数据，生成一条对应的 SQL 语句
+        # 获取表名
+        t_name = self.t_name
+        # 获取字段名称
+        fields = self.fileds
+        # filed_dict = {} 创建一个字典来存储键值对
+        filed_dict = {}
+        # 获取对应字段的值
+
+        for filed in fields.keys():
+            filed_dict[filed] = getattr(self, filed)
+
+        # 生成对应的sql语句
+        sql = 'INSERT INTO {} VALUE{};'.format(t_name,tuple(filed_dict.values()))
+        print(sql)
+
+
+class User(BaseModel):
+    """ 用户模型类 """
+    username = CharFiled()
+    pwd = CharFiled()
+    age = IntFiled()
+    live = BoolFiled()
+
+
+class Order(BaseModel):
+    """ 订单模型类 """
+    id = IntFiled()
+    money = IntFiled()
+
+
+xiaom = User(username='小明',age =18,pwd = '123',live= True)
+
+xiaom.save()
+
+# order1 = Order(id=123,moeny=222)
+# print(order1.id)
+
+"""
+ORM更深的实现，orm都有自带的
+
+"""
 
 

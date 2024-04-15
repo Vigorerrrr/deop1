@@ -32,7 +32,7 @@ class),继承的类叫子类。
 
 class Base(object):
     def run(self):
-        print('_____base__run____:慢慢走路')
+        print('___base___run___:慢慢走路')
         
 class Cat(Base):
     def run(self):
@@ -40,7 +40,7 @@ class Cat(Base):
         
 class Dog(Base):
     def run(self):
-        print('___cat___ruh____:会爬树')
+        print('___cat___ruh___:会爬树')
 
 ------------------------------------------------
 
