@@ -437,7 +437,7 @@ for i in range(5):
     c.start()
 
 """
-
+"""
 
 import threading
 import queue
@@ -491,8 +491,7 @@ producer_thread.join()
 consumer_thread.join()
 
 print("Producer and Consumer stopped.")
-"""
-14:50
+
 """
 
 
