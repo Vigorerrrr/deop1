@@ -20,6 +20,8 @@ import queue
 import random
 import threading
 import time
+from multiprocessing import Process
+
 import requests
 
 """
@@ -494,9 +496,78 @@ print("Producer and Consumer stopped.")
 
 """
 
+"""
+四、进程
+1、进程介绍
+·进程什么是进程
+。程序:例如xxx.py这是程序,是一个静态的
+。进程:一个程序运行起来后,代码+用到的资源称之为进程,它是操作系统分配资源的基本单元。
+。不仅可以通过线程完成多任务,进程也是可以的
+
+进程的状态
+工作中,任务数往往大于cpu的核数,即一定有一些任务正在执行,而另外一些任务在等待cpu进行执
+行,因此导致了有了不同的状态
+就绪状态:运行的条件都已经满足了,正在等在cpu执行
+执行状态:cpu正在执行其功能
+等待状态:等待某些条件满足,例如一个程序sleep了,此时就处于等待态
+
+2、进程、线程对比
 
 
+3、multiprocessing模块
+Process([group [, target [, name [, args]]]]]]]]]])
+    target:如果传递了函数的引用,可以任务这个子进程就执行这里的代码
+    args:给target指定的函数传递的参数,以元组的方式传递
+    kwargs:给target指定的函数传递命名参数
+    name:给进程设定一个名字,可以不设定
+    group:指定进程组,大多数情况下用不到
+
+Process创建的实例对象的常用方法:
+    start():启动子进程实例(创建子进程)
+    is_alive():判断进程子进程是否还在活着
+    join((timeout)):是否等待子进程执行结束,或等待多少秒
+    terminate():不管任务是否完成,立即终止子进程
+    
+Process创建的实例对象的常用属性:
+    name:当前进程的别名,默认为Process-N,N为从1开始递增的整数
+    pid:当前进程的pid(进程号)
 
 
+"""
+
+a_num = 100
 
 
+def work1():
+    for i in range(10):
+        global a_num
+        print('1111--------{}'.format(a_num))
+        a_num += 1
+        time.sleep(1)
+
+
+def work2():
+    for i in range(10):
+        global a_num
+        print('2222',a_num)
+        a_num += 1
+        time.sleep(1)
+
+
+if __name__ == '__main__':
+
+    p1 = Process(target=work1)
+    p2 = Process(target=work2)
+
+
+    p1.start()
+    p2.start()
+
+"""
+进程执行的时候，不加if __name__ == '__main__': 为什么会报错？
+
+多进程不共享全局变量
+ 
+ 
+ 
+"""
