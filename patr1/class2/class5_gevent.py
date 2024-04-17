@@ -47,6 +47,7 @@ def work():
         url = q.get()
         time.sleep(0.01)
 
+
 st = time.time()
 g1 = gevent.spawn(work)
 g2 = gevent.spawn(work)
