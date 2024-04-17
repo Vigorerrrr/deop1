@@ -4,6 +4,7 @@
 @SoftWare: PyCharm
 
 """
+import multiprocessing
 from multiprocessing import Process,Queue
 
 import requests
@@ -34,10 +35,9 @@ import time
 
 # q = Queue()
 
-
-
-
 a = 0
+
+
 def work1(q):
     while q.qsize()>0:
         global a
@@ -45,6 +45,7 @@ def work1(q):
         requests.get(url)
         print('work1正在执行任务',a)
         a += 1
+
 
 def work2(q):
     while q.qsize()>0:
@@ -54,8 +55,9 @@ def work2(q):
         print('work2正在执行任务',a)
         a += 1
 
+
 if __name__ == '__main__':
-    q = Queue()
+    q = multiprocessing.Queue()
     for i in range(10):
         q.put('https://www.cnblogs.com/xachary/p/18139413')
     p1 = Process(target=work1,args=(q,))
@@ -65,4 +67,3 @@ if __name__ == '__main__':
     p1.start()
     p2.start()
  
-#  25  00:00
