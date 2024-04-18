@@ -1,0 +1,55 @@
+.top_menu{
+    height: 100px;
+    /*background: blue;*/
+    background: rgba(255,122,111,0.5);
+    /*background: #03c;*/
+    /*类选择器*/
+    .title{
+        /*background: blue;*/
+        width: 350px;
+        color: #fff;
+        font: bold 32px/100px 微软雅黑;
+        text-align: center;
+        float: left;
+
+    }
+    .menu_list{
+        /*width: 1300px;*/
+        height: 100px;
+        float: left;
+        /*background: aquamarine;*/
+
+    }
+
+    .menu_list ul{
+        margin: 0;
+    }
+    /*层级选择器*/
+    .menu_list li{
+        width: 250px;
+        height: 100px;
+        /*background: aliceblue;*/
+        float: left;
+        font: bold 32px/100px 微软雅黑;
+        color: white;
+        list-style-type: None;
+
+    }
+    /*.box1 {*/
+    /*        height: 200px;*/
+    /*        width: 200px;*/
+    /*        background: #606037;*/
+    /*        float: left;*/
+    /*}*/
+    /*.box2 {*/
+    /*        height: 200px;*/
+    /*        width: 200px;*/
+    /*        background: #00dd77;*/
+    /*        float: left;*/
+    /*    }*/
+
+
+/*31 00:00*/
+
+
+}

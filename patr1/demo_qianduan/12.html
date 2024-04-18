@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调用后端接口示例</title>
+</head>
+<body>
+    <h1>调用后端接口示例</h1>
+    <button onclick="fetchData()">获取数据</button>
+    <div id="data-display"></div>
+
+    <script>
+        function fetchData() {
+            // 调用后端接口
+            fetch('http://192.168.10.23:5000/api/get-html-url')
+                .then(response => {
+                    // 确保响应是成功的
+                    if (!response.ok) {
+                        throw new Error('网络响应错误: ' + response.status);
+                    }
+                    // 解析JSON响应
+                    return response.json();
+                })
+                .then(data => {
+                    // 在页面上显示返回的数据
+                    const displayElement = document.getElementById('data-display');
+                    displayElement.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                })
+                .catch(error => {
+                    // 显示错误消息
+                    console.error('获取数据时出现错误:', error);
+                    alert('获取数据时出现错误: ' + error.message);
+                });
+        }
+    </script>
+</body>
+</html>

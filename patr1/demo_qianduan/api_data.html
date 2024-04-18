@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load HTML from Backend</title>
+    <script>
+        function loadHtmlFromBackend() {
+            // 发送请求到后端接口
+            fetch('http://127.0.0.1:5000/api/get-html-url')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json(); // 假设后端返回的是JSON格式，包含HTML地址
+                })
+                .then(data => {
+                    const htmlUrl = data.htmlUrl;
+                    // 请求后端返回的HTML地址
+                    fetch(htmlUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok for HTML content');
+                            // 或者你可以选择展示一个错误页面或消息
+                            }
+                            return response.text();
+                        })
+                        .then(htmlContent => {
+                            // 将返回的HTML内容插入到页面的某个元素中
+                            document.getElementById('content').innerHTML = htmlContent;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching HTML content:', error);
+                            // 处理错误，例如显示错误消息
+                            alert('Error fetching HTML content: ' + error.message);
+                        });
+                })
+                .catch(error => {
+                    console.error('Error fetching HTML URL:', error);
+                    // 处理错误，例如显示错误消息
+                    alert('Error fetching HTML URL: ' + error.message);
+                });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="loadHtmlFromBackend()">加载HTML内容</button>
+    <div id="content"></div> <!-- 这里将展示从后端加载的HTML内容 -->
+</body>
+</html>

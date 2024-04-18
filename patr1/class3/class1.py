@@ -170,12 +170,12 @@ action      定义表单数据提交地址
 method      定义表单提交的方式(常见的有get和post)
 
 from表单中包含的元素
-元素标签            作用
-<label>标签       为表单元素定义文字标注
-<input>标签       定义通用的表单元素
+元素标签                    作用
+<label>标签           为表单元素定义文字标注
+<input>标签           定义通用的表单元素
 <textarea>标签        定义多行文本输入框
-<select>标签      定义下拉表单元素
-<option>标签      与<se1ect>标签配合,定义下拉表单元素中的选项
+<select>标签          定义下拉表单元素
+<option>标签          与<se1ect>标签配合,定义下拉表单元素中的选项
 
 
 2、input标签
@@ -188,29 +188,130 @@ name属性:定义表单元素的名称,此名称是提交数据时时的键名
     </form>
 type属性
 
-text        定义单行文本输入框
+text            定义单行文本输入框
 password        定义密码输入框
-radio      定义单选框
+radio           定义单选框
 checkbox        定义复选框
-file       定义上传文件
-submit      定义提交按钮
-button      定义一个普通按钮
-reset       定义重置按钮
-image       定义图片作为提交按钮,用src属性定义图片地址
-hidden      定义一个隐藏的表单域,用来存储值
+file            定义上传文件
+submit          定义提交按钮
+button          定义一个普通按钮
+reset           定义重置按钮
+image           定义图片作为提交按钮,用src属性定义图片地址
+hidden          定义一个隐藏的表单域,用来存储值
 
 
-
-<1abe1>标签为input元素定义标注(标记)。
+3、label
+<labe1>标签为input元素定义标注(标记)。
 label元素不会向用户星现任何特殊效果。不过,它为鼠标用户改进了可用性。如果您在label元素内点击文本
 就会触发此控件。就是说,当用户选择该标签时,浏览器就会自动勿将焦点转到和标签相关的表单控件上。
 
+for for属性应当与相关元素的id相同
+
+
+
+4、textarea标签
+textarea标签定义多行的文本输入控件。
+文本区中可容纳无限数量的文本,其中的文本的默认字体是等宽字体(通常是Courier)。
+可以通过cols和rows属性来规定textarea的尺寸,更好的办法是使用CSS的height和width属性
+<form action="11111"method="get" id='fo'>
+<textarea name "text"></textarea>
+<inputtype="submit" name=""vaiue="提交">
+</form>
+
+属性                值                 描述
+autofocus       autofocus           规定在页面加载后文本区域自动获得焦点。
+cols            number              规定文本区内的可见宽度。
+disabled        disabled            规定禁用该文本区。
+form_id         form                规定文本区域所属的一个或多个表单。
+maxlength       number              规定文本区域的最大字符数。
+name            name_of_textarea    规定文本区的名称。
+placeholder     text                规定描述文本区域预期值的简短提示。
+readonly        readonl             规定文本区为只读。
+required        required            规定文本区域是必填的,
+rows            number              规定文本区内的可见行数。   
+
+
+5、select标签
+select 元素可创建单选或多选菜单,,也可以用于选择数据提交表单。
+<select>元素中的<option></option>标签用于定义列表中的可用选项。
+<form>
+<select name='skill'>
+<option value = py">python</option>
+<option value ="ht">html</option>
+<option value="css">css</option>
+<option value= java">javascript</option>
+</select>
+<input type="submit" name="">
+</form>
 
 
 
 
 
-27 00:00
+4、内联框架
+
+
+1、iframe
+iframe元素会创建包含另外一个文档的内联框架(即行内框架)。
+例子:将登录页面的内容链接到当前页面
+<iframe src="http://02form.html" height="200"width="400">
+
+
+
+
+5、HTML元素分类
+
+元素就是标签,布局中常用的有三种标签,块元素、内联元素、内联块元素,了解这三种元素的特性,才能熟练的
+进行页面布局。
+1、块元素
+块元素,也可以称为行元素,布局中常用的标签如:div、p、ul、li、h1-h6、dl、dt、dd等等都是块元素,它在
+布局中的行为:
+    支持全部的样式
+    如果没有设置宽度,默认的宽度为父级宽度100%
+    盒子占据一行、即使设置了宽度
+    
+2、内联元素
+
+内联元素,也可以称为行内元素,布局中常用的标签如:a、span、em、b、strong、i等等都是内联元素,它们
+在布局中的行为:
+    支持部分样式(不支持宽、高、margin上下、padding上下)
+    宽高由内容决定
+    盒子并在一行
+    代码换行,盒子之间会产生间距
+    子元素是内联元素,父元素可以用text-align属性设置子元素水平又齐方式
+
+3、内联块元素
+内联快元素,也叫行内块元素,是新增的元素类型,现有元素没有归于此类别的,img和input元素的行为类似这
+种元素,但是也归类于内联元素,我们可以用display属性将块元素或者内联元素转化成这种元素。它们在布局中
+表现的行为:
+    支持全部样式
+    如果没有设置宽高,宽高由内容决定
+    盒子并在一行
+    代码换行,盒子之间会产生间距
+    子元素是内联元素,父元素可以用text-align属性设置子元素水平又齐方式
+
+
+这三种元素,可以通过display属性来相互转化,不过实际开发中,快元素用得比较多,所以我们经常把内联元素
+转化为块元素,少量转化为内联块,而要使用内联元素时,直接使用内联元素,而不用块元素转化了
+display属性
+display属性是用来设置元素的类型及隐藏的,常用的属性有:
+    none元素隐藏目不占位置
+    block元素以块元素显示
+    inline元素以内联元素显示
+    inline-block元素以内联块元素显示
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

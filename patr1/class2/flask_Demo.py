@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
+    return 'http://192.168.1.14:8899/309/index.html'
 
 # 如果直接运行这个文件，则启动 Flask 服务器
 
