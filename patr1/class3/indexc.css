@@ -1,3 +1,9 @@
+body{
+    background: azure;
+}
+
+
+
 .top_menu{
     height: 100px;
     /*background: blue;*/
@@ -24,17 +30,31 @@
     .menu_list ul{
         margin: 0;
     }
+
     /*层级选择器*/
     .menu_list li{
-        width: 250px;
+        width: 150px;
         height: 100px;
         /*background: aliceblue;*/
         float: left;
         font: bold 32px/100px 微软雅黑;
         color: white;
         list-style-type: None;
+        text-align: center;
+
 
     }
+    .menu_list li:hover{
+        background: blanchedalmond;
+    }
+
+    .top_user{
+        float: right;
+        font: normal 16px/40px "Microsoft YaHei UI";
+        margin: 30px 40px;
+
+    }
+
     /*.box1 {*/
     /*        height: 200px;*/
     /*        width: 200px;*/
