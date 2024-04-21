@@ -4,12 +4,15 @@ body{
 
 
 
-.top_menu{
+.top_menu {
     height: 100px;
+    /*background: cyan;*/
+
     /*background: blue;*/
     background: rgba(255,122,111,0.5);
     /*background: #03c;*/
     /*类选择器*/
+}
     .title{
         /*background: blue;*/
         width: 350px;
@@ -46,6 +49,7 @@ body{
     }
     .menu_list li:hover{
         background: blanchedalmond;
+
     }
 
     .top_user{
@@ -68,8 +72,203 @@ body{
     /*        float: left;*/
     /*    }*/
 
+/*侧边导航栏*/
 
-/*31 00:00*/
+.left_menu{
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 300px;
+    height: 1000px;
+    background: #ffffff;
+
+}
 
 
+/*主体内容部分*/
+
+.content {
+    width: 1200px;
+    height: 1000px;
+    position: absolute;
+    left: 320px;
+    top: 120px;
+    background: white;
+}
+
+.left_title {
+    height: 100px;
+    width: 100%;
+    float: left;
+    font: normal 28px/100px "Microsoft YaHei UI";
+    color: #fff;
+    background: #03c;
+    text-indent: 50px;
+|
+}
+
+.left_menu_list li{
+    height: 60px;
+    width: 80%;
+    border-bottom: solid 1px #e3e2ed;
+    font: normal 22px/60px "Microsoft YaHei UI";
+    text-indent: 50px;
+    float: left;
+    color: darkblue;
+}
+.left_menu_list div{
+    width: 15px;
+    height: 17px;
+    /*background: #0033cc;*/
+    background-image: url("henxiao.jpg");
+    background-repeat: no-repeat;
+    position: relative;
+    /*top: 30px;*/
+    /*right: 50px;*/
+    float: left;
+    margin-top: 30px;
+    margin-left: 15px;
+
+
+}
+
+
+.content {
+    width: 1400px;
+    height: 1000px;
+    position: absolute;
+    left: 320px;
+    top: 120px;
+    background: #ffff;
+    padding-left: 60px;
+}
+.pro_info {
+    width: 300px;
+    height: 230px;
+    border: solid 1px #9297a2;
+    margin: 25px;
+    float: left;
+    border-radius: 10px;
+
+}
+
+.pro_title{
+    width: 100%;
+    height: 50px;
+    font: normal 28px/50px "Microsoft YaHei UI";
+    background: cornflowerblue;
+    color: black;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+
+.pro_info p{
+    text-align: center;
+    font: normal 15px/30px "Microsoft YaHei UI";
+    color: rgba(0,0,0,0.47);
+
+}
+
+/*.dll {*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*    height: 40px;*/
+/*    width: 40px;*/
+/*    text-align: center;*/
+
+/*}*/
+
+.pro_info a{
+    width: 100%;
+    height: 40px;
+    background: blue;
+    font: normal 15px/30px "Microsoft YaHei UI";
+    justify-content: center;
+    color: white;
+    border-radius: 5px;
+}
+
+/*弹窗样式*/
+
+/*添加项目弹框样式*/
+.alter_add {
+    position: fixed;
+    left: 36%;
+    top: 100px;
+    width: 550px;
+    height: 600px;
+    background-color: #fff;
+    border: solid 1px #9297a2;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+.alter-title {
+    font: bold 24px/30px "Microsoft YaHei UI";
+    color: #0033cc;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.alter_quit {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+.alter_input {
+    width: 100%;
+    height: 50px;
+    font: normal 22px/50px "Microsoft YaHei";
+    color: #03c;
+    margin-bottom: 30px;
+}
+.alter_input label {
+    width: 50px;
+    font: normal 22px/50px "Microsoft Yahei";
+    color: #03c;
+}
+.alter_input input {
+    height:75%;
+    width:400px;
+    border-radius: 5px;
+    border: solid 1px #0033cc;
+}
+.pro_desc {
+    font: normal 22px/50px "Microsoft YaHei";
+    color: #03c;
+}
+
+.pro_desc textarea {
+    margin: 0 9%;
+    width: 90%;
+    height: 150px;
+    border: solid 1px #0033cc;
+    border-radius: 5px;
+}
+
+.pro_tj{
+    text-align: center;
+
+}
+.tj {
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+    background: #0033cc;
+    border-radius: 10px;
+    border: solid 1px #0033cc;
+    font: normal 22px/50px "Microsoft YaHei";
+    color: #fff;
+}
+
+.hide{
+    display: none;
+
+}
+
+.show{
+    display: block;
 }

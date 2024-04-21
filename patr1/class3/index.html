@@ -5,6 +5,14 @@
     <title>Title</title>
     <link rel="stylesheet" href="reset.css" type="text/css">
 
+    <script type="text/javascript">
+        $(function(){
+            $('#add').click(function(){
+            $(".alter_add").addClass('show')
+            })
+            })
+    </script>
+
 <!--    <style>-->
 <!--        body{-->
 <!--            background-image: url("picture/pic.jpg");-->
@@ -38,8 +46,100 @@
 
 </div>
 
+
+<div class="left_menu">
+
+    <div class="left_title">
+        项目管理
+    </div>
+    <div class="left_menu_list">
+        <ul><a href="">
+            <li>接口管理
+
+            </li>
+            <div></div>
+        </a>
+            <a href="">
+            <li>用例管理</li>
+                <div></div>
+        </a>
+            <a href="">
+            <li>测试计划</li>
+                <div></div>
+        </a>
+            <a href="">
+            <li>测试报告</li>
+                <div></div>
+        </a>
+            <a href="">
+            <li>环境管理</li>
+                <div></div>
+        </a>
+        </ul>
+    </div>
+
+</div>
+
+
+<!--内容部分-->
+<div class="content">
+    <div class="pro_info">
+
+        <div class="pro_title">项目A</div>
+        <p>用例数量:44</p>
+        <p>接口数量:5</p>
+
+        <div class="dll"><a href="">删除</a></div>
+
+    </div>
+    <img src="" alt="">
+
+
+
+
+</div>
+
 <!--<div class="box1">box1</div>-->
 <!--<div class="box2">box2</div>-->
+
+<div class="alter_add hide" >
+    <div class="alter-title"> 新增项目</div>
+    <div class="alter_quit">
+<!--        xx图片地址-->
+        <img src="" alt="">
+    </div>
+    <from>
+        <div class="alter_input">
+            <label for="pro_title">项目名称:</label>
+            <input type="text" name="title" id="pro_title">
+        </div>
+
+        <div class="alter_input">
+            <label for="pro_url">项目地址:</label>
+            <input type="text" name="title" id="pro_url">
+        </div>
+
+        <div class="alter_input">
+            <label for="pro_test">测试人员:</label>
+            <input type="text" name="title" id="pro_test">,
+        </div>
+
+        <div class="pro_desc">
+            <label for="">项目描述:</label>
+            <textarea name="" id="" cols= 25" rows="5"></textarea>
+        </div>
+
+        <div class="pro_tj">
+        <input class="tj" type="button" value="提交">
+        </div>
+
+    </from>
+
+</div>
+
+<div class="pro_info" id="add" >
+    <img src="jiantou.jpeg" alt="">
+</div>
 
 
 </body>
