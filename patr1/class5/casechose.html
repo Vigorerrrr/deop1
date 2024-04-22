@@ -193,10 +193,28 @@
 
             });
              // 删除
+            // $('.del_data').click(function () {
+            //     // 获取当前选择卡的table 最后一行的内容
+            //     $(this).siblings('table').find('tr').eq(-1).remove()
+            // });
             $('.del_data').click(function () {
                 // 获取当前选择卡的table 最后一行的内容
-                $(this).siblings('table').find('tr').eq(-1).remove()
-            })
+                // $(':checked').parent().parent().remove();
+                var check= $(':checked');
+                var table = $(this).siblings('table');
+                //判断当前tr行数是否大于2
+                if(table.find('tr').length>2){
+                    if(check.length>0){
+                        check.parent().parent().remove()
+                    }else {
+                        table.find('tr').eq(-1).remove()
+                    }
+
+                }
+
+
+
+            });
         })
 
 
