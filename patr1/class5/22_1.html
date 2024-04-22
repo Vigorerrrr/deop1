@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+    <style>
+        .div1{
+            height: 200px;
+            background: #9ad2ed;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(function (){
+            // 读取元素属性
+            // var href = $('.div1 a').eq(0).attr('href');
+            //
+            // //写入属性
+            // $('a').attr('href',href)
+            //
+            // // 移除属性
+            // $('a').eq(2).removeAttr('href')
+            //
+            // //移除全部属性
+            // $('a').removeAttr('href')
+
+
+            // 元素操作
+            // 获取元素中的文本
+            // console.log($('.div1').text());
+
+            // //获取元素内容
+            //     console.log($('.div1').html())
+
+
+            // 获取元素的value值（表单）
+            // $('#btn').click(function (){
+            //     var user = $('#user').val();
+            //     var pwd = $('#pwd').val();
+            //     if (user.length<6){
+            //         alert('账号小于6位数');
+            //     } else {
+            //         alert(user);
+            //     }
+
+            // })
+
+            // 添加元素 元素的最后面加入内容
+            // $('.div1').append("<h1>Python</h1>");
+
+            // 添加元素 元素的最开始加入内容
+            // $('.div1').prepend("<h1>Python</h1>");
+
+            // 添加元素 在元素前添加内容
+            // $('.div1').before("<h1>Python</h1>");
+
+
+            // 在元素之后插入内容
+            // $('.div1').after("<h1>Python</h1>");
+
+            // 删除元素
+            // $('ul').remove();
+
+            // 删除子元素
+            $('ul').empty();
+
+
+        })
+
+    </script>
+
+
+
+</head>
+<body>
+    <div class="div1">
+<!--        <h1>Python</h1>-->
+        <span>你好</span>
+        <ul>
+            <li><a href="http://192.168.1.14:8899/309/index.html">数据1</a></li>
+            <li><a href="">数据2</a></li>
+            <li><a href="">数据3</a></li>
+            <li><a href="">数据4</a></li>
+            <li><a href="">数据5</a></li>
+        </ul>
+
+        <from action="">
+            账号:<input type="text" id="user" name="user">
+            <br>
+            密码:<input type="password" id="pwd" name="pwd">
+            <input id="btn" type="button" value="点击提交">
+
+
+
+        </from>
+
+
+    </div>
+
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chose</title>
+    <script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="reset.css" type="text/css">
+
+    <style type="text/css">
+        .box{
+            height: 60px;
+            margin: 20px auto 0 30px;
+
+        }
+        /*.menu ul{*/
+        /*    margin: 0;*/
+        /*}*/
+
+        .menu li{
+            margin-right: 10px;
+            width: 150px;
+            font: normal 18px/60px "Microsoft YaHei UI";
+            float: left;
+            /*background: #9ad2ed;*/
+            text-align: center;
+        }
+        .menu .cur{
+            background: #9ad2ed;
+        }
+
+        .content{
+            width: 100%;
+            /*margin-top: 10px;*/
+            float: left;
+        }
+
+        .content div{
+            background: #9ad2ed;
+            /*margin-top: 10px;*/
+            width: 100%;
+            height: 350px;
+            display: none;
+            color: black;
+        }
+
+        .content .active{
+            display: block;
+        }
+        .tables tr{
+            height: 40px;
+
+        }
+
+        .tables th{
+            height: 40px;
+            border: solid 2px #525D76;
+
+        }
+        .tables td{
+            height: 40px;
+            border: solid 2px #525D76;
+
+        }
+        .tables input{
+            line-height: 40px;
+            width: 95%;
+
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <div class="box">
+        <div class="menu">
+            <ul>
+                <li class="cur">请求头</li>
+                <li>请求数据</li>
+                <li>响应数据</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="active">
+                <input type="button" class="add_data" value="添加header">
+                <input type="button" class="del_data" value="删除header">
+
+
+
+
+
+                    <table class="tables" >
+                    <tr>
+                        <th style="width: 10%">选择</th>
+                        <th style="width: 35%">header</th>
+                        <th style="width: 35%">values</th>
+                    </tr>
+                    <tr>
+                        <td><input type="radio"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div>
+                <input type="button" class="add_data" value="添加header">
+                <input type="button" class="del_data" value="删除header">
+
+
+
+
+
+                    <table class="tables" >
+                    <tr>
+                        <th style="width: 10%">选择</th>
+                        <th style="width: 15%">类型</th>
+                        <th style="width: 30%">header</th>
+                        <th style="width: 45%">values</th>
+                    </tr>
+                    <tr>
+                        <td><input type="radio"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div>
+                <input type="button" class="add_data" value="添加header">
+                <input type="button" class="del_data" value="删除header">
+
+
+
+
+
+                    <table class="tables" >
+                    <tr>
+                        <th style="width: 10%">选择</th>
+                        <th style="width: 35%">header</th>
+                        <th style="width: 35%">values</th>
+                    </tr>
+                    <tr>
+                        <td><input type="radio"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        $(function(){
+            // 选项卡
+            $('.menu li').click(function(){
+                $(this).addClass('cur').siblings().removeClass('cur');
+                // 获取
+                $('.content div').eq($(this).index()).addClass('active').siblings().removeClass('active');
+
+
+            })
+
+            // var tr = "<tr>\n" +
+            //     "                        <td><input type=\"radio\"></td>\n" +
+            //     "                        <td><input type=\"text\"></td>\n" +
+            //     "                        <td><input type=\"text\"></td>\n" +
+            //     "                    </tr>";
+            //
+            // // 添加参数
+            // $('#add_data').click(function (){
+            //     $(this).siblings('table').append(tr);
+            //
+            //
+            // })
+
+            $('.add_data').click(function (){
+                // 获取当前选择卡的table 最后一行的内容
+                var trr = '<tr>'+$(this).siblings('table').find('tr').eq(-1).html()+'</tr>tr>';
+                $(this).siblings('table').append(trr);
+
+
+
+            });
+             // 删除
+            $('.del_data').click(function () {
+                // 获取当前选择卡的table 最后一行的内容
+                $(this).siblings('table').find('tr').eq(-1).remove()
+            })
+        })
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

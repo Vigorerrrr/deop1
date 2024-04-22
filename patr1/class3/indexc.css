@@ -148,7 +148,9 @@ body{
     border: solid 1px #9297a2;
     margin: 25px;
     float: left;
+    text-align: center;
     border-radius: 10px;
+    background-position: center;
 
 }
 

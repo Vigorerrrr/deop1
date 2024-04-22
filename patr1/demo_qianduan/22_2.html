@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请求接口并展示HTML数据</title>
+    <script type="text/javascript" src="jquery-3.7.1.slim.min.js"></script>
+</head>
+<body>
+    <button id="fetchDataBtn">请求数据</button>
+    <div id="htmlContainer"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#fetchDataBtn').click(function() {
+                // 发送请求到获取地址的接口
+                $.ajax({
+                    url: 'http://127.0.0.1:5000/api/get-html-url',
+                    type: 'GET',
+                    success: function(data) {
+                        // 提取地址
+                        var address = data.address;
+
+                        // 发送请求到地址获取HTML数据
+                        $.ajax({
+                            url: address,
+                            type: 'GET',
+                            success: function(html) {
+                                // 在htmlContainer中展示HTML数据
+                                $('#htmlContainer').html(html);
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('请求HTML数据时出错:', error);
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('请求地址时出错:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

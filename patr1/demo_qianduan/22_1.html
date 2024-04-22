@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请求</title>
+</head>
+<body>
+    <button id="fetchDataBtn">请求数据</button>
+    <div id="htmlContainer"></div>
+
+    <script>
+        document.getElementById('fetchDataBtn').addEventListener('click', function() {
+            // 发送请求到第一个接口
+            fetch('http://127.0.0.1:5000/api/get-html-url')
+                .then(response => response.json())
+                .then(data => {
+                    // 提取返回的地址
+                    const address = data.address;
+
+                    // 发送请求到地址获取HTML数据
+                    fetch(address)
+                        .then(response => response.text())
+                        .then(html => {
+                            // 在htmlContainer中展示HTML数据
+                            var htmlContainer = document.getElementById('htmlContainer');
+                            htmlContainer.innerHTML = ''; // 清空之前的内容
+                            htmlContainer.innerHTML = html; // 将HTML数据展示在页面上
+                        })
+                        .catch(error => {
+                            console.error('请求HTML数据时出错:', error);
+                        });
+                })
+                .catch(error => {
+                    console.error('请求地址时出错:', error);
+                });
+        });
+    </script>
+</body>
+</html>

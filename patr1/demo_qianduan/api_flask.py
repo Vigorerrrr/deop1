@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route('/api/get-html-url', methods=['GET'])
 def get_html_url():
     # 这里应该是你的逻辑来获取或生成HTML地址
-    html_url = 'F:/poje1/patr1/demo_qianduan/api_data.html'
+    html_url = 'http://192.168.1.14:8899/309/index.html'
     return jsonify({'htmlUrl': html_url})
 
 

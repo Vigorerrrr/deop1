@@ -8,14 +8,27 @@
     <script>
 
         $(function (){
-            $('#box1').css({width:"300px",height:"200px",background:"green"})
+            $('#box1').css({width:"300px",height:"200px",background:"darkblue"})
 
         // var li3 = $('#li3').css({background: 'pink'});
         //     li3.prev().css({background:'red'});
-        $('#li3').css({background: 'pink'}).prev().css({background: 'blue'})
+        // $('#li3').css({background: 'pink'}).prev().css({background: 'blue'})
+
+
+            //侧边菜单
+            // $('.left_menu_listh3').click(function(){
+            // $(this).next().toggleClass('show')
+            // .parent().siblings().children('ul').removeClass('show');
+
 
 
         })
+        $('#box2').click(function(){
+            $(this).toggle();
+
+
+        })
+
     </script>
 
 </head>
