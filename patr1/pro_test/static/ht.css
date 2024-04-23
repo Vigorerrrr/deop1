@@ -1,0 +1,72 @@
+body{
+    background: azure;
+}
+
+
+
+.top_menu {
+    height: 80px;
+    /*background: cyan;*/
+
+    /*background: blue;*/
+    background: rgba(255,122,111,0.5);
+    /*background: #03c;*/
+    /*类选择器*/
+}
+.title{
+        /*background: blue;*/
+        width: 350px;
+        color: #fff;
+        font: bold 32px/80px 微软雅黑;
+        text-align: center;
+        float: left;
+
+}
+.menu_list{
+        /*width: 1300px;*/
+        height: 80px;
+        width: 60%;
+        float: left;
+        font: bold 32px/80px 微软雅黑;
+        /*text-align: right;*/
+        color: #525D76;
+        /*background: aquamarine;*/
+
+}
+
+.menu_list a:hover{
+    background: blanchedalmond;
+
+}
+
+.top_user{
+    float: right;
+    font: normal 16px/40px "Microsoft YaHei UI";
+    margin: 30px 40px;
+
+}
+
+#tj{
+    width: 100px;
+    height: 40px;
+    background: #9ad2ed;
+}
+#qk{
+    width: 100px;
+    height: 40px;
+    background: white;
+}
+
+h1 {
+        width: 200px; /* 设置宽度为300像素 */
+        height: 50px; /* 设置高度为100像素 */
+        /*background-color: lightblue; !* 设置背景颜色 *!*/
+        padding: 20px; /* 设置内边距 */
+        text-align: center; /* 文本居中对齐 */
+        line-height: 50px; /* 设置行高与高度相同，实现垂直居中 */
+    }
+
+
+/*.cur{*/
+/*            background: #9ad2ed;*/
+/*        }*/

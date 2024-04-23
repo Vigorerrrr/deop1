@@ -12,8 +12,8 @@ body{
     background: rgba(255,122,111,0.5);
     /*background: #03c;*/
     /*类选择器*/
-}
-    .title{
+    }
+.title{
         /*background: blue;*/
         width: 350px;
         color: #fff;
@@ -22,7 +22,7 @@ body{
         float: left;
 
     }
-    .menu_list{
+.menu_list{
         /*width: 1300px;*/
         height: 100px;
         float: left;

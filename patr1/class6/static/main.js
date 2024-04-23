@@ -1,6 +1,7 @@
 $(function (){
     //ajax请求
     $('#dl').click(function (){
+        console.log('------------')
         // 获取账号
         var user= $('#username').val();
         //获取密码

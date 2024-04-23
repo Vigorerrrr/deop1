@@ -49,7 +49,7 @@ interface_data = {
 #首页
 @app.route('/',methods=['get'])
 def index():
-    return render_template('case1.html')
+    return render_template('html.html')
 
 
 #登录
@@ -58,7 +58,7 @@ def login():
     data = request.form
     #判断账号,密码是否正确
     if user_info.get('user') == data.get('user') and user_info.get('pwd')==data.get('pwd'):
-        return jsonify({'code': "1", "data": None, "msg":"成功"})
+        return jsonify({'code': "1", "data": 'http://192.168.1.14:8899/309/index.html', "msg":"成功"})
     else:
         return jsonify({'code': "0", "data": None, "msg":"密码有误"})
 
