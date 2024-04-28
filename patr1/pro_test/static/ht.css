@@ -65,6 +65,65 @@ h1 {
         text-align: center; /* 文本居中对齐 */
         line-height: 50px; /* 设置行高与高度相同，实现垂直居中 */
     }
+.box{
+            height: 60px;
+            margin: 20px auto 0 30px;
+
+        }
+        /*.menu ul{*/
+        /*    margin: 0;*/
+        /*}*/
+
+        .menu li{
+            margin-right: 10px;
+            width: 150px;
+            font: normal 18px/60px "Microsoft YaHei UI";
+            float: left;
+            /*background: #9ad2ed;*/
+            text-align: center;
+        }
+        .menu .cur{
+            background: #9ad2ed;
+        }
+
+        .content{
+            width: 100%;
+            /*margin-top: 10px;*/
+            float: left;
+        }
+
+        .content div{
+            background: #9ad2ed;
+            /*margin-top: 10px;*/
+            width: 100%;
+            height: 350px;
+            display: none;
+            color: black;
+        }
+
+        .content .active{
+            display: block;
+        }
+        .tables tr{
+            height: 40px;
+
+        }
+
+        .tables th{
+            height: 40px;
+            border: solid 2px #525D76;
+
+        }
+        .tables td{
+            height: 40px;
+            border: solid 2px #525D76;
+
+        }
+        .tables input{
+            line-height: 40px;
+            width: 95%;
+
+        }
 
 
 /*.cur{*/

@@ -7,8 +7,6 @@
 """
 
 import pymysql
-import time
-import datetime
 
 
 def do_mysql_saas3_super(sql_data):
