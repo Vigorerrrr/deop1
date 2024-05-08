@@ -58,8 +58,8 @@ body{
 }
 
 h1 {
-        width: 200px; /* 设置宽度为300像素 */
-        height: 50px; /* 设置高度为100像素 */
+        width: 300px; /* 设置宽度为300像素 */
+        height: 100px; /* 设置高度为100像素 */
         /*background-color: lightblue; !* 设置背景颜色 *!*/
         padding: 20px; /* 设置内边距 */
         text-align: center; /* 文本居中对齐 */

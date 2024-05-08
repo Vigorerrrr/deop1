@@ -23,7 +23,7 @@ $(function (){
         });
 
     });
-
+  1
     //ajax请求
     $('.tjb').click(function (){
         $.ajax({
